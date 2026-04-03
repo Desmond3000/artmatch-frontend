@@ -33,6 +33,11 @@ const router = createRouter({
       path: '/artist-dashboard',
       name: 'artist-dashboard',
       component: () => import('../views/ArtistDashboardView.vue'),
+    },
+    {
+    path: '/edit-profile',
+    name: 'edit-profile',
+    component: () => import('../views/EditProfile.vue'),
     }
   ],
 })

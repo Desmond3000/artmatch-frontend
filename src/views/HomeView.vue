@@ -27,7 +27,7 @@
     </div>
     <hr />
     <p class="dropdown-item" @click="router.push('/artist-dashboard')">Profile</p>    
-    <p class="dropdown-item" @click="router.push('/settings')">Settings</p>
+    <p class="dropdown-item" @click="router.push('/edit-profile')">Settings</p>
     <p class="dropdown-item" @click="router.push('/')">Sign Out</p>
   </div>
 </div>

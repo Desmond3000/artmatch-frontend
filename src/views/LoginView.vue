@@ -5,16 +5,19 @@
     </video>
 
     <img src="@/assets/LOGO1.png" alt="ArtMatch Logo" class="logo" />
-
+    <!-- Login Container -->
     <div class="container">
       <div class="glass-panel">
+    
+    <!-- Login Content -->
       <h1 class="title">LOGIN</h1>
       <p class="error-txt" v-if="errorMessage">{{ errorMessage }}</p>
+      
       <div class="form-group">
         <label>Email</label>
         <div class="input-wrapper">
         <img src="@/assets/ACC_LOGO.png" class="icon" />          
-        <input type="text" placeholder="Enter Email" v-model="username" />
+        <input type="text" placeholder="Enter Email" v-model="email" />
         </div>
       </div>
 
@@ -45,22 +48,29 @@ import { authAPI } from '@/api/index'
 const authStore = useAuthStore()
 const router = useRouter()
 
-const username = ref('')
+const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
 
 const login = async () => {
-  if (!username.value || !password.value) {
+  if (!email.value || !password.value) {
     errorMessage.value = 'Please fill in all fields'
     return
   }
+
+  console.log("Sending:", {
+  email: email.value,
+  password: password.value
+})
+
   try {
     const response = await authAPI.login({
-      username: username.value,
+      email: email.value,
       password: password.value
     })
     authStore.login(response.data)
     router.push('/home')
+    
   } catch (err) {
     errorMessage.value = 'Invalid username or password'
   }
